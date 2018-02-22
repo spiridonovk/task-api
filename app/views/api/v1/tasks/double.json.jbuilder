@@ -1,6 +1,6 @@
 
-json.array! @arr do |arr|
-  json.id arr.id
-  json.name arr.name
-  # json.project_name task.project.name unless task.project.nil?
+json.array! @tasks do |task|
+  json.id task.id
+  json.name task.name
+  json.project_name task.project.name unless task.project.nil?
 end

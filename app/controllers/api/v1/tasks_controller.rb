@@ -5,15 +5,16 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def first_letter
-    @tasks = Task.first_letter
-    render :name, status: 200
-end
+    @tasks = []
+    Project.first_letter.each do |project|
+      @tasks += Task.where(project_id: project)
+    end
+  end
 
   def double
-    @arr = []
-    tasks = Task.has_doubles
-    tasks.each do |task|
-      @arr += Task.where(name: task.name)
+    @tasks = []
+    Task.has_doubles.each do |task|
+      @tasks += Task.where(name: task.name)
     end
     render :double, status: 200
   end

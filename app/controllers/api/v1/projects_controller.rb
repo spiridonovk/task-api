@@ -6,7 +6,7 @@ class Api::V1::ProjectsController < ApplicationController
 
   def sort_by_tasks
     @projects = Project.sort_by_tasks
-    render :second, status: 200
+    render :sort_by_tasks, status: 200
   end
 
   def include
